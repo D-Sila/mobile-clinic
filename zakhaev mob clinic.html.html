@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakhav Mobile Clinic | Compassionate Healthcare</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+    <div class="container mx-auto px-4">
+        <!-- Header -->
+        <header class="py-6 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-hospital text-3xl text-primary-600 dark:text-primary-400"></i>
+                    <h1 class="text-2xl font-bold text-primary-800 dark:text-primary-200">ZAKHAEV MOBILE CLINIC</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link font-medium hover:text-primary-600 dark:hover:text-primary-400">Home</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary-600 dark:hover:text-primary-400">Services</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary-600 dark:hover:text-primary-400">About</a>
+                    <a href="#" class="nav-link font-medium hover:text-primary-600 dark:hover:text-primary-400">Contact</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 py-2 border-t border-gray-200 dark:border-gray-700">
+                <a href="#" class="block py-2 nav-link">Home</a>
+                <a href="#" class="block py-2 nav-link">Services</a>
+                <a href="#" class="block py-2 nav-link">About</a>
+                <a href="#" class="block py-2 nav-link">Contact</a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section class="py-12 md:py-20">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">Compassionate Healthcare On The Go</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">Bringing expert medical consultation and care directly to you with warmth and understanding.</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button id="start-consultation-btn" class="btn-hover bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg shadow-md">
+                            Start Consultation <i class="fas fa-stethoscope ml-2"></i>
+                        </button>
+                        <button id="learn-more-btn" class="btn-hover bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary-600 dark:text-primary-400 font-medium py-3 px-6 rounded-lg border border-primary-600 dark:border-primary-400 shadow-md">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Consultation Section -->
+            <section id="consultation-section" class="hidden py-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-12">
+                <div class="max-w-4xl mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-primary-700 dark:text-primary-300">Patient Consultation</h2>
+                    
+                    <!-- Patient Info Form -->
+                    <div class="mb-8 card-hover bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                            <i class="fas fa-user-circle mr-2"></i> Patient Information
+                        </h3>
+                        <form id="patient-info-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="patient-name" class="block text-sm font-medium mb-1">Full Name</label>
+                                <input type="text" id="patient-name" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="patient-age" class="block text-sm font-medium mb-1">Age</label>
+                                <input type="number" id="patient-age" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                            <div>
+                                <label for="patient-gender" class="block text-sm font-medium mb-1">Gender</label>
+                                <select id="patient-gender" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" required>
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="patient-contact" class="block text-sm font-medium mb-1">Contact Number</label>
+                                <input type="tel" id="patient-contact" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" required>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Symptoms and Examination -->
+                    <div class="mb-8 card-hover bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                            <i class="fas fa-notes-medical mr-2"></i> Symptoms & Examination
+                        </h3>
+                        <form id="symptoms-form">
+                            <div class="mb-4">
+                                <label for="symptoms" class="block text-sm font-medium mb-1">Symptoms</label>
+                                <textarea id="symptoms" rows="3" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Describe the patient's symptoms..."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="examination" class="block text-sm font-medium mb-1">Examination Findings</label>
+                                <textarea id="examination" rows="3" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Record examination findings..."></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="diagnosis" class="block text-sm font-medium mb-1">Preliminary Diagnosis</label>
+                                <input type="text" id="diagnosis" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Enter preliminary diagnosis...">
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Treatment Plan -->
+                    <div class="mb-8 card-hover bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400">
+                            <i class="fas fa-pills mr-2"></i> Treatment Plan
+                        </h3>
+                        <div class="mb-4">
+                            <label for="medications" class="block text-sm font-medium mb-1">Medications</label>
+                            <div id="medication-list" class="mb-2">
+                                <!-- Medications will be added here -->
+                            </div>
+                            <div class="flex">
+                                <input type="text" id="medication-input" class="flex-grow px-4 py-2 rounded-l-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Enter medication...">
+                                <button id="add-medication-btn" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-r-lg">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="health-advice" class="block text-sm font-medium mb-1">Health Advice</label>
+                            <textarea id="health-advice" rows="3" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Provide health advice and recommendations..."></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="follow-up" class="block text-sm font-medium mb-1">Follow-up Instructions</label>
+                            <textarea id="follow-up" rows="2" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-primary-500 focus:border-primary-500" placeholder="Provide follow-up instructions..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button id="generate-report-btn" class="btn-hover bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-3 px-6 rounded-lg shadow-md">
+                            <i class="fas fa-file-medical mr-2"></i> Generate Report
+                        </button>
+                        <button id="generate-receipt-btn" class="btn-hover bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg shadow-md">
+                            <i class="fas fa-receipt mr-2"></i> Generate Receipt
+                        </button>
+                        <button id="clear-form-btn" class="btn-hover bg-gray-600 hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-lg shadow-md">
+                            <i class="fas fa-trash-alt mr-2"></i> Clear Form
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Report Modal -->
+            <div id="report-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold text-primary-700 dark:text-primary-300">Patient Medical Report</h3>
+                            <button id="close-report-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div id="report-content" class="space-y-4">
+                            <!-- Report content will be inserted here -->
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button id="print-report-btn" class="btn-hover bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg shadow-md mr-2">
+                                <i class="fas fa-print mr-2"></i> Print Report
+                            </button>
+                            <button id="download-report-btn" class="btn-hover bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg shadow-md">
+                                <i class="fas fa-download mr-2"></i> Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Modal -->
+            <div id="receipt-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold text-primary-700 dark:text-primary-300">Payment Receipt</h3>
+                            <button id="close-receipt-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div id="receipt-content" class="space-y-4">
+                            <!-- Receipt content will be inserted here -->
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button id="print-receipt-btn" class="btn-hover bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg shadow-md mr-2">
+                                <i class="fas fa-print mr-2"></i> Print Receipt
+                            </button>
+                            <button id="download-receipt-btn" class="btn-hover bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg shadow-md">
+                                <i class="fas fa-download mr-2"></i> Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section class="py-12">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold mb-12 text-center text-primary-700 dark:text-primary-300">Our Compassionate Services</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="card-hover bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="text-primary-600 dark:text-primary-400 text-4xl mb-4">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Expert Consultation</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Personalized medical consultations with experienced healthcare professionals who listen and care.</p>
+                        </div>
+                        <div class="card-hover bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="text-primary-600 dark:text-primary-400 text-4xl mb-4">
+                                <i class="fas fa-ambulance"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Mobile Healthcare</h3>
+                            <p class="text-gray-600 dark:text-gray-300">We come to you, bringing quality healthcare services to your home or workplace.</p>
+                        </div>
+                        <div class="card-hover bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                            <div class="text-primary-600 dark:text-primary-400 text-4xl mb-4">
+                                <i class="fas fa-file-medical-alt"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">Digital Records</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Secure digital records and reports for easy access and continuity of care.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-8 border-t border-gray-200 dark:border-gray-700 mt-12">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-primary-700 dark:text-primary-300">Zakhav Mobile Clinic</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Compassionate healthcare services delivered with expertise and warmth.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-primary-700 dark:text-primary-300">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Home</a></li>
+                            <li><a href="#" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Services</a></li>
+                            <li><a href="#" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">About Us</a></li>
+                            <li><a href="#" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-primary-700 dark:text-primary-300">Contact</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt mr-2 text-primary-600 dark:text-primary-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-primary-600 dark:text-primary-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">info@zakhavclinic.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marker-alt mr-2 text-primary-600 dark:text-primary-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">123 Health St, Medical City</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-primary-700 dark:text-primary-300">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-8 text-center text-gray-500 dark:text-gray-400">
+                    <p>&copy; 2023 Zakhav Mobile Clinic. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const startConsultationBtn = document.getElementById('start-consultation-btn');
+        const consultationSection = document.getElementById('consultation-section');
+        const generateReportBtn = document.getElementById('generate-report-btn');
+        const generateReceiptBtn = document.getElementById('generate-receipt-btn');
+        const clearFormBtn = document.getElementById('clear-form-btn');
+        const reportModal = document.getElementById('report-modal');
+        const receiptModal = document.getElementById('receipt-modal');
+        const closeReportModal = document.getElementById('close-report-modal');
+        const closeReceiptModal = document.getElementById('close-receipt-modal');
+        const printReportBtn = document.getElementById('print-report-btn');
+        const printReceiptBtn = document.getElementById('print-receipt-btn');
+        const downloadReportBtn = document.getElementById('download-report-btn');
+        const downloadReceiptBtn = document.getElementById('download-receipt-btn');
+        const addMedicationBtn = document.getElementById('add-medication-btn');
+        const medicationInput = document.getElementById('medication-input');
+        const medicationList = document.getElementById('medication-list');
+
+        // Medications array
+        let medications = [];
+
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navigation Links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('href');
+                if (target === '#consultation-section') {
+                    consultationSection.classList.remove('hidden');
+                    consultationSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // In a real app, this would navigate to the section
+                    console.log(`Navigating to ${target}`);
+                }
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Start Consultation
+        startConsultationBtn.addEventListener('click', () => {
+            consultationSection.classList.remove('hidden');
+            consultationSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add Medication
+        addMedicationBtn.addEventListener('click', () => {
+            const med = medicationInput.value.trim();
+            if (med) {
+                medications.push(med);
+                updateMedicationList();
+                medicationInput.value = '';
+            }
+        });
+
+        // Update Medication List
+        function updateMedicationList() {
+            medicationList.innerHTML = '';
+            medications.forEach((med, index) => {
+                const medItem = document.createElement('div');
+                medItem.className = 'flex items-center justify-between bg-gray-100 dark:bg-gray-600 p-2 rounded mb-2';
+                medItem.innerHTML = `
+                    <span class="text-gray-800 dark:text-gray-200">${med}</span>
+                    <button class="text-red-500 hover:text-red-700 delete-med" data-index="${index}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                medicationList.appendChild(medItem);
+            });
+
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-med').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('button').getAttribute('data-index'));
+                    medications.splice(index, 1);
+                    updateMedicationList();
+                });
+            });
+        }
+
+        // Generate Report
+        generateReportBtn.addEventListener('click', () => {
+            const patientName = document.getElementById('patient-name').value || 'Not provided';
+            const patientAge = document.getElementById('patient-age').value || 'Not provided';
+            const patientGender = document.getElementById('patient-gender').value || 'Not provided';
+            const symptoms = document.getElementById('symptoms').value || 'Not provided';
+            const examination = document.getElementById('examination').value || 'Not provided';
+            const diagnosis = document.getElementById('diagnosis').value || 'Not provided';
+            const healthAdvice = document.getElementById('health-advice').value || 'Not provided';
+            const followUp = document.getElementById('follow-up').value || 'Not provided';
+
+            const reportContent = document.getElementById('report-content');
+            reportContent.innerHTML = `
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                        <h4 class="text-xl font-semibold text-primary-700 dark:text-primary-300">Patient Information</h4>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">${new Date().toLocaleDateString()}</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium">Name:</p>
+                            <p>${patientName}</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Age:</p>
+                            <p>${patientAge}</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Gender:</p>
+                            <p>${patientGender}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 text-primary-700 dark:text-primary-300">Medical Details</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-medium">Symptoms:</p>
+                            <p class="whitespace-pre-line">${symptoms}</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Examination Findings:</p>
+                            <p class="whitespace-pre-line">${examination}</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Diagnosis:</p>
+                            <p>${diagnosis}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2 text-primary-700 dark:text-primary-300">Treatment Plan</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-medium">Medications:</p>
+                            <ul class="list-disc pl-5">
+                                ${medications.length > 0 
+                                    ? medications.map(med => `<li>${med}</li>`).join('') 
+                                    : '<li>No medications prescribed</li>'}
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-medium">Health Advice:</p>
+                            <p class="whitespace-pre-line">${healthAdvice}</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Follow-up Instructions:</p>
+                            <p class="whitespace-pre-line">${followUp}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="font-medium">Doctor's Signature:</p>
+                            <div class="h-16 mt-2"></div>
+                            <p class="border-t border-gray-400 w-32 pt-1">Dr. Zakhav</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-medium">Date:</p>
+                            <p>${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            reportModal.classList.remove('hidden');
+        });
+
+        // Generate Receipt
+        generateReceiptBtn.addEventListener('click', () => {
+            const patientName = document.getElementById('patient-name').value || 'Not provided';
+            const services = [
+                { name: 'Medical Consultation', price: 50 },
+                { name: 'Examination', price: 30 }
+            ];
+            const total = services.reduce((sum, service) => sum + service.price, 0);
+
+            const receiptContent = document.getElementById('receipt-content');
+            receiptContent.innerHTML = `
+                <div class="text-center mb-6">
+                    <h4 class="text-xl font-bold text-primary-700 dark:text-primary-300">ZAKHAEV MOBILE CLINIC</h4>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">123 Health St, Medical City</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Tel: +1 (555) 123-4567</p>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Patient:</span>
+                        <span>${patientName}</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Date:</span>
+                        <span>${new Date().toLocaleDateString()}</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Receipt No:</span>
+                        <span>${'RCP-' + Math.floor(1000 + Math.random() * 9000)}</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-b border-gray-200 dark:border-gray-700 py-2 mb-4">
+                    <div class="grid grid-cols-3 gap-2 font-medium">
+                        <div>Service</div>
+                        <div class="text-right">Qty</div>
+                        <div class="text-right">Amount</div>
+                    </div>
+                </div>
+                
+                ${services.map(service => `
+                    <div class="grid grid-cols-3 gap-2 mb-2">
+                        <div>${service.name}</div>
+                        <div class="text-right">1</div>
+                        <div class="text-right">$${service.price.toFixed(2)}</div>
+                    </div>
+                `).join('')}
+                
+                <div class="border-t border-gray-200 dark:border-gray-700 pt-2 mt-4">
+                    <div class="flex justify-between font-bold">
+                        <span>TOTAL</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400">
+                    <p>Thank you for choosing Zakhav Mobile Clinic</p>
+                    <p class="mt-2">This receipt is valid for tax purposes</p>
+                </div>
+            `;
+
+            receiptModal.classList.remove('hidden');
+        });
+
+        // Clear Form
+        clearFormBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to clear all form data?')) {
+                document.getElementById('patient-info-form').reset();
+                document.getElementById('symptoms-form').reset();
+                document.getElementById('health-advice').value = '';
+                document.getElementById('follow-up').value = '';
+                medications = [];
+                updateMedicationList();
+            }
+        });
+
+        // Close Modals
+        closeReportModal.addEventListener('click', () => {
+            reportModal.classList.add('hidden');
+        });
+
+        closeReceiptModal.addEventListener('click', () => {
+            receiptModal.classList.add('hidden');
+        });
+
+        // Print Buttons
+        printReportBtn.addEventListener('click', () => {
+            alert('In a real application, this would print the report');
+        });
+
+        printReceiptBtn.addEventListener('click', () => {
+            alert('In a real application, this would print the receipt');
+        });
+
+        // Download Buttons
+        downloadReportBtn.addEventListener('click', () => {
+            alert('In a real application, this would download the report as PDF');
+        });
+
+        downloadReceiptBtn.addEventListener('click', () => {
+            alert('In a real application, this would download the receipt as PDF');
+        });
+
+        // Initialize theme from localStorage
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

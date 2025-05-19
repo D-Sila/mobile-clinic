@@ -1,0 +1,34 @@
+## 1. **Save the HTML Code**
+- Copy the entire HTML code provided
+- Save it as a file with `.html` extension (e.g., `zakhaev-clinic.html`)
+
+## 2. **Open the File in a Browser**
+- Double-click the saved HTML file to open it in your default browser
+- Alternatively, right-click the file and select "Open with" to choose a specific browser
+# Steps to Execute the Zakhaev Mobile Clinic Website
+
+## 3. **Test the Website**
+- The website will load with all the features:
+  - Dark/light theme toggle (top right corner)
+  - Mobile-responsive menu (visible on small screens)
+  - Consultation form (click "Start New Consultation" button)
+
+## 4. **Interact with Features**
+- **Start a Consultation**: Click the "Start New Consultation" button to show the patient form
+- **Toggle Theme**: Click the moon/sun icon to switch between dark/light mode
+- **Mobile Menu**: On small screens, click the hamburger menu icon to show navigation
+
+## 5. **View Generated Reports**
+- The form is set up to collect patient data (though not functional yet)
+- Future development would include JavaScript to generate reports from the form data
+
+## 6. **Deploy to Web Server (Optional)**
+- For public access, upload the HTML file to a web hosting service
+- Services like GitHub Pages, Netlify, or traditional web hosts can be used
+
+## 7. **Next Steps for Full Functionality**
+To make this fully functional, you would need to:
+1. Add JavaScript to handle form submission
+2. Implement report generation logic
+3. Add database connectivity for storing patient records
+4. Implement authentication for medical staff
